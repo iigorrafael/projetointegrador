@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>  
+        <title>Login</title>
+        <!-- CSS -->
+        <ui:include src="../../resources/templates/template-links-css.xhtml"/>
+
+        <!-- Chamadas JS -->
+        <script src="../../resources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/a44030ac75.js"></script>
+    </h:head>
+    <h:body class="tela-login">      
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9 col-md-6 col-md-offset-3 login-form">
+                    <div class="logo-login">
+                        <a href="index.xhtml"><img class="img-responsive" src="../../resources/images/logo.svg"/></a>
+                    </div>
+                    <h:form class="form-horizontal">
+                        <div class="form-group">
+                            <p:outputLabel for="j_username" class="col-sm-2 control-label" value="E-mail"/>
+                            <div class="col-sm-10 col-md-8">
+                                <p:inputText class="form-control" id="j_username" value="" placeholder="Digite seu e-mail"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p:outputLabel for="j_password" class="col-sm-2 control-label" value="Senha"/>
+                            <div class="col-sm-10 col-md-8">
+                                <p:password class="form-control" id="j_password" value="" placeholder="Digite sua senha"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">         
+
+                                    <p:selectBooleanCheckbox class="left" >
+                                        <p:ajax  />
+                                    </p:selectBooleanCheckbox>
+                                    <h:outputText class="text-justify" value=" Manter-me conectado"/>                                    
+                                    <!--     <label>
+                                             <input type="checkbox"> Manter-me conectado
+                                             </label>-->
+                                    <!--     <label>
+                                             <h:selectBooleanCheckbox value="" /> Manter-me conectado
+                                             </label>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <p:commandButton class="btn btn-primary"  icon="fa fa-thumbs-o-up" iconPos="right" value="Entrar"  action="j_spring_security_check"/>
+                                <!--                                <button type="submit" class="btn btn-primary">Entrar <i class="fa fa-thumbs-up" aria-hidden="true"></i> </button>-->
+                                <!--                                <button type="button" class="btn btn-link">Esqueci minha senha <i class="fa fa-frown-o" aria-hidden="true"></i></button>-->
+                                <p:commandButton class="btn btn-link"  icon="fa fa-frown-o" iconPos="right" value="Esqueci minha senha"  action="j_spring_security_check"/>
+
+                            </div>
+                        </div>
+                    </h:form>
+                    <center>
+                        <p:commandButton class="btn btn-default"  icon="fa fa-google" style="color:#DD4B38" value=" Entrar com Google" action="j_spring_security_check"/>
+                        <p:commandButton class="btn btn-default"  icon="fa fa-facebook-official" style="color:#3b5998" value="Entrar com Facebook" action="j_spring_security_check"/>
+                    </center>
+                </div>
+            </div>
+        </div>
+        <!--         FOOTER -->
+        <div class="clear"></div>
+        <div class="footer-login">
+            <div class="footer-dentro-login">
+                <br/><br/>© 2016 FDS Systens. Todos os direitos reservados.<br/><br/>
+                <a href="index.xhtml"><button type="button" class="btn btn-link"> <i class="fa fa-home" aria-hidden="true"></i> Home</button></a>
+                <a href="noticias.xhtml"><button type="button" class="btn btn-link"> Notícias</button></a>
+                <a href="eventos.xhtml"><button type="button" class="btn btn-link"> Eventos</button></a>
+                <a href="contato.xhtml"><button type="button" class="btn btn-link"> Contato</button></a>
+            </div>
+        </div>
+    </h:body>
+</html>
+

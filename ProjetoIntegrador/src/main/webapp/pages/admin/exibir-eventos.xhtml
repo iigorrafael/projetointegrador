@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="author" content="Gabriel Soligo"/>
+
+
+        <title>Meu Perfil</title>
+
+
+        <!-- CSS -->
+        <link href="../../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!--IE10 viewport hack for Surface/desktop Windows 8 bug--> 
+        <link href="../../resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+        <!--Custom styles for this template--> 
+        <link href="../../resources/css/painel.css" rel="stylesheet"/>
+
+        <!-- Chamadas JS -->
+        <script src="../../resources/js/jquery.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/a44030ac75.js"></script>
+
+        <!--IE10 viewport hack for Surface/desktop Windows 8 bug--> 
+        <!--        <script src="js/ie10-viewport-bug-workaround.js"></script>-->
+
+    </h:head>
+    <h:body>
+        <ui:include src="../../resources/templates/template-menu-topo.xhtml"/> 
+
+        <div class="container-fluid">
+            <div class="row">                
+                <div class="col-sm-3 col-md-2 sidebar">                    
+                    <h:form >
+                        <!--                    <h3>Toggleable</h3>-->
+                        <p:menu toggleable="true" >                            
+                            <p:submenu label="Eventos">
+                                <p:menuitem value="Cadastrar Evento" outcome="cadastro-evento" icon="ui-icon-close"/>
+                                <p:menuitem value="Editar Evento"  icon="ui-icon-close"/>
+                                <p:menuitem value="Eventos Futuros"  icon="ui-icon-close"/>  
+                                <p:menuitem value="Eventos Terminados"  icon="ui-icon-close"/>                                
+                            </p:submenu>                              
+                        </p:menu>     
+                    </h:form>  
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <div class="container">
+                        <h1 class="page-header">Painel de Controle</h1>
+                    </div>
+                    <div class="row placeholders">
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="" width="160" height="160" class="img-responsive" alt=""/>
+                            <h4>Atendimento</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="" width="160" height="160" class="img-responsive" alt=""/>
+                            <h4>Cadastros</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="" width="160" height="160" class="img-responsive" alt=""/>
+                            <h4>Relatórios</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="" width="160" height="160" class="img-responsive" alt=""/>
+                            <h4>Sistema</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                    </div>
+
+                    <h2 class="sub-header">Registros</h2>
+                    <div class="table-responsive">
+
+                        <h:form id="form">
+
+                            <p:growl id="msgs" showDetail="true"/>
+
+                            <f:facet name="header">
+                                Row Editing
+                            </f:facet>
+
+
+                            <p:dataTable id="lista" var="evento"  value="#{controleEvento.eventos}"  editable="true" > 
+                                <p:ajax event="cellEdit" process="@this" update=":form:lista"/>
+                                <p:column headerText="ID" visible="false" >                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.id}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputId" value="#{controleEvento.evento.id}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Nome">                              
+                                    <p:cellEditor>                                    
+                                        <f:facet name="output"><h:outputText value="#{evento.nomeDoEvento}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputNome" value="#{controleEvento.evento.nomeDoEvento}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Data">                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.data}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputData" value="#{controleEvento.evento.data}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Local">                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.local}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputLocal" value="#{controleEvento.evento.local}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Detalhes/Descrição">                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.descricaoEvento}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputDescrcao" value="#{controleEvento.evento.descricaoEvento}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Requisitos">                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.requisitos}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputRequisitos" value="#{controleEvento.evento.requisitos}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>               
+                                <p:column headerText="Vagas">                              
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{evento.vagas}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="inputVagas" value="#{controleEvento.evento.vagas}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>                     
+                                <p:column style="width:32px">
+                                    <p:commandLink action="../../pages/admin/cadastro-evento.xhtml"  />                                    
+                                </p:column>
+                                <p:ajax event="cellEdit"  process="@this" update=":form:lista"/>
+                            </p:dataTable>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JavaScript
+================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    </h:body>
+</html>
+
+
+

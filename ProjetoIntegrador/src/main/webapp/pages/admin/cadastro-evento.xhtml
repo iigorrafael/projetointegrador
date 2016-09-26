@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>	
+        <!-- TITULO -->
+        <title>Cadastro</title>        
+
+        <!-- METAS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>  
+
+        <!-- CSS  -->
+       <ui:include src="../../resources/templates/template-links-css.xhtml"/>   
+
+        <!-- Chamadas JS  -->
+       <ui:include src="../../resources/templates/template-links-js.xhtml"/>
+        <script src="../../resources/js/JavascriptPrimefacesCalendarLocale.js" type="text/javascript"></script>
+		
+		
+    </h:head>
+    <h:body style="padding-top:50px; background:#1F5181;">         
+        <!-- MENU TOPO -->
+        <ui:include src="../../resources/templates/template-menu-topo.xhtml"/>
+        <!--FIM DO MENU TOPO -->
+        <!-- CORPO -->                    
+        <div class="titulo">
+            <div class="container">
+                <h1>Cadastro de Eventos</h1>
+            </div>
+        </div>
+        <div class="container-fluid cadastro-inteiro">	
+            <div class="container">
+
+                <h:form>
+
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel  for="nome" value="Nome do Evento:" />
+                        <p:inputText value="#{controleEvento.evento.nomeDoEvento}" class="form-control" id="nome" required="true" placeholder="Digite o nome do evento"/>
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel for="endereco" value="Local do Evento"/> 
+                        <p:inputText class="form-control" id="endereco" value="#{controleEvento.evento.local}" rendered="true" placeholder="Ex: Rua das Mitagens, 69"/>
+                    </div>
+
+                    <div class="form-group col-xs-2 ">
+                        <p:outputLabel for="vagas" value="Quantidade de vagas"/> 
+                        <p:inputText class="form-control" id="vagas" value="#{controleEvento.evento.vagas}" placeholder="Ex: 69"/>
+                    </div>                    
+
+                    <div class="form-group col-xs-2 ">
+                        <p:outputLabel for="data" value="Data do Evento"/> 
+                        <p:calendar id="data" value="#{controleEvento.evento.data}" required="true" locale="pt" mindate="#{now}"  showButtonPanel="true" effect="fold" pattern="dd/MM/yyyy HH:mm"/>
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel for="requisitos" value="Requisitos"/> 
+                        <p:inputText class="form-control" id="requisitos"  value="#{controleEvento.evento.requisitos}" />
+                    </div>
+
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel for="rg" value="Descrição do Evento" />
+                        <p:inputTextarea class="form-control" id="rg"  value="#{controleEvento.evento.descricaoEvento}" required="true" placeholder=""/>
+
+                    </div>   
+
+                    <div class="form-group col-xs-12">
+                        <h:commandButton class="btn btn-default" id="enviar" value="Cadastrar"  action="#{controleEvento.cadastrar()}" />
+                    </div>
+
+                </h:form>
+
+            </div>
+        </div>
+        <!-- FIM CORPO -->
+        <!-- FOOTER -->
+        <ui:include src="../../resources/templates/template-footer.xhtml"/>
+        <!-- SCRIPTS -->
+    </h:body>
+</html>
+

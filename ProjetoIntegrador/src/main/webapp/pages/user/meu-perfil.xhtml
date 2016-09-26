@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="author" content="Gabriel Soligo"/>
+
+
+        <title>Meu Perfil</title>
+
+        <!-- CSS -->
+        <link href="../../resources/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/css/style.css" rel="stylesheet" type="text/css" />
+
+        <!--IE10 viewport hack for Surface/desktop Windows 8 bug--> 
+        <link href="../../resources/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+        <!--Custom styles for this template--> 
+        <link href="../../resources/css/painel.css" rel="stylesheet"/>
+
+        <!-- Chamadas JS -->
+        <ui:include src="../../resources/templates/template-links-js.xhtml"/>
+
+        <!--IE10 viewport hack for Surface/desktop Windows 8 bug--> 
+        <script src="../../resources/js/ie10-viewport-bug-workaround.js"></script>
+
+    </h:head>
+    <h:body>
+        <ui:include src="../../resources/templates/template-menu-topo.xhtml"/> 
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <!--                    <ul class="nav nav-sidebar">
+                                            <li class="active"><a href="#">Início<span class="sr-only">(current)</span></a></li>
+                                            <li><a href="#">Avisos</a></li>
+                                            <li><a href="#">Relatórios</a></li>
+                                            <li><a href="#">Exportar Dados</a></li>
+                                        </ul>-->
+                    <h:form >
+                        <!--                    <h3>Toggleable</h3>-->
+                        <p:menu toggleable="true" >
+                            <p:submenu label="Conta">
+                                <p:menuitem value="Meus Dados"  icon="ui-icon-disk" />
+                                <p:menuitem value="Meu Endereço"   icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Minha Senha"   icon="ui-icon-arrowrefresh-1-w"/>
+                                <p:menuitem value="Meu E-mail"   icon="ui-icon-arrowrefresh-1-w"/>
+                            </p:submenu>
+                            <p:submenu label="Eventos">
+                                <p:menuitem value="Eventos Terminados"   ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Eventos Futuros"   ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Meus Certificados"   ajax="false" icon="ui-icon-close"/>
+                                <p:menuitem value="Meus Trabalhos"   ajax="false" icon="ui-icon-close"/>
+                            </p:submenu>                              
+                        </p:menu>     
+                    </h:form>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1 class="page-header">Painel de Controle</h1>
+
+                    <div class="row placeholders">
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="160" height="160" class="img-responsive" alt="Generic placeholder thumbnail"/>
+                            <h4>Atendimento</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="160" height="160" class="img-responsive" alt="Generic placeholder thumbnail"/>
+                            <h4>Cadastros</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="160" height="160" class="img-responsive" alt="Generic placeholder thumbnail"/>
+                            <h4>Relatórios</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 placeholder">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="160" height="160" class="img-responsive" alt="Generic placeholder thumbnail"/>
+                            <h4>Sistema</h4>
+                            <span class="text-muted">Descrição aqui</span>
+                        </div>
+                    </div>
+
+                    <h2 class="sub-header">Registros</h2>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>Cartão SUS</th>
+                                    <th>Unidade de Saúde</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1,001</td>
+                                    <td>Lorem</td>
+                                    <td>ipsum</td>
+                                    <td>dolor</td>
+                                    <td>sit</td>
+                                </tr>
+                                <tr>
+                                    <td>1,002</td>
+                                    <td>amet</td>
+                                    <td>consectetur</td>
+                                    <td>adipiscing</td>
+                                    <td>elit</td>
+                                </tr>                                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <!--<script src="js/holder.min.js"></script>-->
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <!--<script src="js/ie10-viewport-bug-workaround.js"></script>-->
+    </h:body>
+</html>
+
+

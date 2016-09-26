@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>	
+        <!-- TITULO -->
+        <title>Cadastro</title>        
+
+        <!-- METAS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>  
+
+        <!-- CSS -->
+        <ui:include src="../../resources/templates/template-links-css.xhtml"/>
+
+        <!-- Chamadas JS -->
+        <script src="../../resources/resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/a44030ac75.js"></script>
+    </h:head>
+    <h:body style="padding-top:50px; background:#1F5181;">         
+        <!-- MENU TOPO -->
+        <ui:include src="../../resources/templates/template-menu-topo.xhtml"/>
+        <!--FIM DO MENU TOPO -->
+        <!-- CORPO -->                    
+        <div class="titulo">
+            <div class="container">
+                <h1>Cadastro</h1>
+                <h4>Precisamos de alguns dados pessoais, para que você possa utilizar nossos recursos!</h4>
+            </div>
+        </div>
+        <div class="container-fluid cadastro-inteiro">	
+            <div class="container">
+
+                <h:form>
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel  for="nome" value="Nome Completo:" />
+                        <p:inputText value="#{controleUsuario.usuario.nome}" class="form-control" id="nome" required="true" placeholder="Digite seu nome completo"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-2">
+                        <p:outputLabel for="rg" value="RG" />
+                        <p:inputMask class="form-control" id="rg" mask="9.999.999-9?9" value="#{controleUsuario.usuario.rg}" required="true" placeholder="Apenas números"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-2">
+                        <p:outputLabel for="cpf" value="CPF"/>
+                        <p:inputMask class="form-control" id="cpf" value="#{controleUsuario.usuario.cpf}" mask="999.999.999-99" required="true" placeholder="Apenas números"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-2">
+                        <p:outputLabel for="telefone" value="Telefone:"/>
+                        <p:inputMask class="form-control" id="telefone" mask="(99)?9999-9999" maxlength="11" value="#{controleUsuario.usuario.telefone}" required="true" placeholder="Ex:(00)00000-0000"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-3 ">
+                        <p:outputLabel for="escolaridade" value="Escolaridade:" />
+                        <h:selectOneMenu class="form-control" id="escolaridade" required="true"  value="#{controleUsuario.usuario.escolaridade}">
+                            <f:selectItem itemLabel="Escolha uma opção" itemValue="" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Ensino Fundamental" itemValue="Ensino Fundamental" />
+                            <f:selectItem itemLabel="Ensino Médio" itemValue="Ensino Médio"/>
+                            <f:selectItem itemLabel="Ensino Superior" itemValue="Ensino Superior"/>
+                        </h:selectOneMenu>
+                    </div>      
+
+                    <div class="form-group col-xs-12 col-md-3">
+                        <p:outputLabel for="cep" value="CEP"/>
+                        <p:inputMask class="form-control" id="cep" value="#{controleUsuario.endereco.cep}" mask="99999-999" required="true" placeholder="Apenas números"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-3 ">
+                        <p:outputLabel for="estado" value="Estado" />
+                        <h:selectOneMenu class="form-control" id="estado" required="true"  value="#{controleUsuario.estado.id}">
+                            <f:selectItem itemLabel="Escolha uma opção" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{controleUsuario.estados}" var="est" itemLabel="#{est.nome}" itemValue="#{est.id}" />
+                            <f:ajax execute="@this" render="cidade" event="change" listener="#{controleUsuario.carregarCidades()}" />		
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-3 ">
+                        <p:outputLabel for="cidade" value="Cidade" />
+                        <h:selectOneMenu class="form-control" id="cidade" required="true" value="#{controleUsuario.cidade.id}">
+                            <f:selectItem itemLabel="Escolha uma opção" itemValue="" noSelectionOption="true"/>
+                            <f:selectItems value="#{controleUsuario.getCidades()}" var="cid" itemLabel="#{cid.nome}" itemValue="#{cid.id}"/>
+                        </h:selectOneMenu>
+                    </div>               
+
+                    <div class="form-group col-xs-12 col-md-6">
+                        <p:outputLabel for="bairro" value="Bairro:"/>
+                        <p:inputText class="form-control" id="bairro" value="#{controleUsuario.endereco.bairro}" required="true" placeholder="Nome do seu bairro"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-8">
+                        <p:outputLabel for="endereco" value="Endereço:"/> 
+                        <p:inputText class="form-control" id="endereco" value="#{controleUsuario.endereco.rua}" placeholder="Ex: Rua das Mitagens"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <p:outputLabel for="numero" value="Numero:"/>
+                        <p:inputText class="form-control" id="numero" value="#{controleUsuario.endereco.numero}" required="true" placeholder="Apenas números"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <p:outputLabel for="email" value="E-mail:"/>
+                        <p:inputText class="form-control" id="email" value="#{controleUsuario.usuario.email}"  required="true" placeholder="Ex: birl@mutante.com.br"/> 
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <p:outputLabel for="password1"  value="Senha:"/>
+                        <p:password class="form-control" id="password1" feedback="true" 
+                                    inline="true" promptLabel="Força da sua senha" goodLabel="Boa" weakLabel="Fraca" strongLabel="Forte" 
+                                    value="#{controleUsuario.senha}" match="password2"  required="true"  placeholder="Digite sua senha"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <p:outputLabel for="password2" value="Confirme sua Senha:"/>
+                        <p:password class="form-control" id="password2" required="true"  placeholder="Digite sua senha novamente"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <h:commandButton class="btn btn-default" id="enviar" value="Enviar"  action="#{controleUsuario.cadastro()}" />
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+        <!-- FIM CORPO -->
+        <!-- FOOTER -->
+        <ui:include src="../../resources/templates/template-footer.xhtml"/>
+        <!-- SCRIPTS -->
+    </h:body>
+</html>
+

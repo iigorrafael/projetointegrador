@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:p="http://primefaces.org/ui"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>	
+        <!-- TITULO -->
+        <title>Inscrição Evento</title>        
+
+        <!-- METAS -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8"/>  
+
+        <!-- CSS -->
+        <ui:include src="../../resources/templates/template-links-css.xhtml"/>
+        
+        <!-- Chamadas JS -->
+        <script src="../../resources/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="https://use.fontawesome.com/a44030ac75.js"></script>
+    </h:head>
+    <h:body style="padding-top:50px; background:#1F5181;">         
+        <!-- MENU TOPO -->
+        <ui:include src="../../resources/templates/template-menu-topo.xhtml"/>
+        <!--FIM DO MENU TOPO -->
+        <!-- CORPO -->                    
+        <div class="titulo">
+            <div class="container">
+                <h1>Inscrição no Evento</h1>
+                <!--                <h4>Precisamos de alguns dados pessoais, para que você possa utilizar nossos recursos!</h4>-->
+            </div>
+        </div>
+        <div class="container-fluid cadastro-inteiro">	
+            <div class="container">
+
+                <h:form>
+                    <div class="form-group col-xs-12">
+                        <p:outputLabel  for="nome" value="Nome Completo:" />
+                        <p:inputText value="#{#}" class="form-control" id="nome" required="true" placeholder="Digite seu nome completo"/>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-md-4">
+                        <p:outputLabel for="papel" value="Atividade:" />
+                        <h:selectOneMenu class="form-control" id="papel"  required="true" value="#{#}">
+                            <f:selectItem itemLabel="Escolha uma opção" noSelectionOption="true" itemValue="" />
+                            <f:selectItem itemLabel="Espectador" itemValue="Espectador" />
+                            <f:selectItem itemLabel="Palestrante" itemValue="Palestrante"/>
+                            <f:selectItem itemLabel="Aprensentador" itemValue="Apresentar Trabalho"/>
+                            <f:selectItem itemLabel="Avaliador" itemValue="Avaliador"/>
+                        </h:selectOneMenu>
+                    </div>
+
+                    <div class="form-group col-xs-12 ">
+                        <h:commandButton class="btn btn-default" id="enviar" value="Inscrever-se"  action="#{controleCadastro.cadastro()}" />
+                    </div>
+                </h:form>
+
+            </div>
+        </div>
+        <!-- FIM CORPO -->
+        <!-- FOOTER -->
+        <ui:include src="../../resources/templates/template-footer.xhtml"/>
+        <!-- SCRIPTS -->
+    </h:body>
+</html>
+
